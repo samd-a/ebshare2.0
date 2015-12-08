@@ -33,6 +33,7 @@ def register(request):
 			# Hash the password with the set_password method.
 			# Once hashed, we can update the user object.
 			user.set_password(user.password)
+			user.is_active = False
 			user.save()
 
 			# Now sort out the UserProfile instance.

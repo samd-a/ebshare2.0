@@ -31,6 +31,7 @@ def renderviewbook(request, book_id):
 	
         #combine book details and related books into 
         c = Context();
+        c['user'] = request.user 
         c['book_title'] = b.book_title
         c['book_author'] = b.book_author
         c['cover'] = b.cover
