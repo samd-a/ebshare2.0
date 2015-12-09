@@ -1,4 +1,5 @@
 {% extends "ebshare/index.html" %}
+{% load staticfiles %}
 {% block body %}
 <br>
 <br>
@@ -11,13 +12,12 @@
                 <h1 class="page-header">Book Shelf</h1>
             </div>
 
-			{% for b in bookList %}
+			{% for book in bookList %}
     			<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				<a class="thumbnail" href={% url "viewbook.views.renderviewbook" b.id%}>
-                    {% load staticfiles %}
-					<img class="img-responsive portfolio-item" src="{% static b.cover %}" alt="{{b.alt_text}}"/>
-                </a>
-            </div>
+    				<a class="thumbnail" href={% url "viewbook.views.renderviewbook" book.id%}>
+    					<img class="img-responsive portfolio-item" src="{{book.cover.url}}" alt="{{book.alt_text}}"/>
+                    </a>
+                </div>
 			{% empty %}
     			<div class="col-lg-3 col-md-4 col-xs-6 thumb">
     	            <a class="thumbnail" href="#">
@@ -25,72 +25,4 @@
 	                </a>
 	            </div>
 			{% endfor %}
-			<!--
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				<a class="thumbnail" href={% url "viewbook.views.renderviewbook" 1%}>
-                    {% load staticfiles %}
-					<img class="img-responsive portfolio-item" src="{% static "OOCnE.jpg" %}" alt="OOCnE"/0>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    {% load staticfiles %}
-					<img class="img-responsive portfolio-item" src="{% static "organization.jpg" %}" alt="OOCnE"/0>
-                </a>
-            </div>
-			
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    {% load staticfiles %}
-					<img class="img-responsive portfolio-item" src="{% static "cs.jpeg" %}" alt="OOCnE"/0>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    {% load staticfiles %}
-					<img class="img-responsive portfolio-item" src="{% static "OS.jpg" %}" alt="OOCnE"/0>
-                </a>
-            </div>
-			
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-			-->
         </div>{% endblock %}

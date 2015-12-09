@@ -124,6 +124,8 @@ STATICFILES_DIRS = (
     'ebshare/static/',
     '', # add root path.
 )
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
 
 FIXTURE_DIRS = (
    'ebshare/fixtures/',

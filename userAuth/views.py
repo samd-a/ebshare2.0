@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from userAuth.forms import UserForm, UserProfileForm
+from userAuth.forms import UserForm, userProfileForm
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -24,7 +24,7 @@ def register(request):
 	if request.method == 'POST':
 		# Attempt to grab information from the raw form information.
 		user_form = UserForm(data=request.POST)
-		profile_form = UserProfileForm(data=request.POST)
+		profile_form = userProfileForm(data=request.POST)
 
 		if user_form.is_valid() and profile_form.is_valid():
 			# Save the user's form data to the database.

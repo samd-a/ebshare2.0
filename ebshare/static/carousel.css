@@ -125,6 +125,10 @@ body {
   .featurette-heading {
     font-size: 50px;
   }
+  .thumb{
+    height: 425px;
+    overflow-y:hidden;
+  }
 }
 
 @media (min-width: 992px) {

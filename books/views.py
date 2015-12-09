@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-
 from books.models import book
+from django.http import HttpResponseRedirect, HttpResponse
+import pdb
 
 # Create your views here.
 
@@ -20,3 +21,17 @@ def index(request):
 def renderbookshelf(request):	
     return index(request)
 #	return render_to_response("books/bookshelf.html")
+
+def contribute_book(request):
+	if request.method == 'POST':
+		book(book_title=request.POST['title'],
+			book_author=request.POST['auther'],
+			description = request.POST['description'],
+			details = request.POST['detail'],
+			cover=request.FILES['cover_image'],
+			alt_text=request.POST['alt_text'],
+			genre=request.POST['genre']
+		).save()
+		return HttpResponseRedirect('/bookshelf')
+	else:
+		return render(request, "books/upload.html", {})
