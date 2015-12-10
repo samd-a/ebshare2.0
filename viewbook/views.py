@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import Context
 from django.db.models import Q
 from books.models import book, review
+from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
 def renderviewbook(request,book_id):
@@ -13,5 +14,5 @@ def renderviewbook(request,book_id):
 
 def add_review(request,book_id):
 	book_selected = book.objects.get(pk=book_id)
-	review(user=request.user,book_review=book_selected,content=request.POST['review'])
+	review(user=request.user,book_review=book_selected,content=request.POST['review']).save()
 	return HttpResponseRedirect('/viewbook/book_id')

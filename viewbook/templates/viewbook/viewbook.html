@@ -31,14 +31,6 @@
                 <h3>Description</h3>
                 <p>
 				{{book.description}}
-				<!--
-				Object-Oriented Software Engineering is written for both the traditional one-semester and the newer two-semester software engineering curriculum. 
-				Part I covers the underlying software engineering theory, 
-				while Part II presents the more practical life cycle, workflow by workflow.
-				The text is intended for the substantial object-oriented segment of the software engineering market. 
-				It focuses exclusively on object-oriented approaches to the development of large software systems that are the most widely used.
-				Text includes 2 running case studies, expanded coverage of agile processes and open-source development..
-				-->
 				</p>
                 <h3>Details</h3>
 				{{book.details|safe}}
@@ -53,6 +45,14 @@
             </div>
 
             <div class="col-md-12">
+                <div class="review">
+                    <h4>User Reviews :</h4> 
+                    {% for review in book.review_set.all %}
+                        <b>{{review.user.username}} :  </b>{{review.content}}
+                        </br>
+                    {% endfor %}
+                </div>
+                </br>
                 {% if user.is_authenticated %}
                     <form method="POST" action="{% url 'add_review' book.id %}">
                         {% csrf_token %}
