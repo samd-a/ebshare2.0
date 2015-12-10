@@ -50,6 +50,8 @@
                     {% for review in book.review_set.all %}
                         <b>{{review.user.username}} :  </b>{{review.content}}
                         </br>
+                    {% empty %}
+                        No User Reviews
                     {% endfor %}
                 </div>
                 </br>
