@@ -52,6 +52,19 @@
 				-->
             </div>
 
+            <div class="col-md-12">
+                {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'add_review' book.id %}">
+                        {% csrf_token %}
+                      <fieldset class="form-group"> 
+                        <label for="formGroupExampleInput">Right a Review</label>
+                        <textarea class="form-control" id="description" name="review" rows="3" placeholder="Review" required></textarea>
+                      </fieldset>
+                      <button type="submit">Submit</button>
+                    </form>
+                {% endif %}
+            </div>
+
         </div>
         <!-- /.row -->
 

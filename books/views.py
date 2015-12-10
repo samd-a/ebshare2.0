@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from books.models import book
 from django.http import HttpResponseRedirect, HttpResponse
-import pdb
 
 # Create your views here.
 
@@ -25,6 +24,7 @@ def renderbookshelf(request):
 def contribute_book(request):
 	if request.method == 'POST':
 		book(book_title=request.POST['title'],
+			user=request.user,
 			book_author=request.POST['auther'],
 			description = request.POST['description'],
 			details = request.POST['detail'],
