@@ -61,7 +61,7 @@ def register(request):
 	# These forms will be blank waiting for user input.
 	else:
 		user_form = UserForm()
-		profile_form = UserProfileForm()
+		profile_form = userProfileForm()
 
 	# Render the template depending on the context.
 	return render_to_response('userAuth/register.html',
@@ -94,7 +94,7 @@ def user_login(request):
 				return HttpResponseRedirect('/')
 			else:
 				# An inactive account was used - no logging in
-				return HttpResponse("Your account is disabled.")
+				return HttpResponse("Your account is not Active.")
 		else:
 			# Bad login details were provided. Don't log the user in.
 			# TODO: create an html page to redirect to with a login fail message
