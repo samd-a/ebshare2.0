@@ -61,7 +61,7 @@ def register(request):
 	# These forms will be blank waiting for user input.
 	else:
 		user_form = UserForm()
-		profile_form = UserProfileForm()
+		profile_form = userProfileForm()
 
 	# Render the template depending on the context.
 	return render_to_response('userAuth/register.html',
